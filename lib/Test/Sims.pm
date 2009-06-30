@@ -3,7 +3,7 @@ package Test::Sims;
 use strict;
 use warnings;
 
-our $VERSION = "20090630";
+our $VERSION = "20090630.033501";
 
 =head1 NAME
 
@@ -333,6 +333,10 @@ And then using it.
 L<http://schwern.org/talks/Generating%20Test%20Data%20With%20The%20Sims.pdf>
 is a set of slides outlining the Sims testing technique which this
 module is supporting.
+
+L<Data::Random> for common rand_* routines.
+
+L<Data::Generate> to generate random data from a set of rules.
 
 
 =head1 SOURCE
