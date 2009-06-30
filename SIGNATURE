@@ -1,0 +1,44 @@
+This file contains message digests of all files listed in MANIFEST,
+signed via the Module::Signature module, version 0.55.
+
+To verify the content in this distribution, first make sure you have
+Module::Signature installed, then type:
+
+    % cpansign -v
+
+It will check each file's integrity, as well as the signature's
+validity.  If "==> Signature verified OK! <==" is not displayed,
+the distribution may already have been compromised, and you should
+not run its Makefile.PL or Build.PL.
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+SHA1 144ee1af8c556f94a7d9bdd146dd5635af9dfefb .perlcriticrc
+SHA1 b1792a796e85dfbf8a74b4d1ad41ad32ddea48bb .perltidyrc
+SHA1 394271c061441aae144827ca1991bc9845c42060 Build.PL
+SHA1 0927512015304c20de1f80fb74db9438043a420d MANIFEST
+SHA1 93ed36f1a1e432876d58af03d0946b9403ce76ff MANIFEST.SKIP
+SHA1 1a5a4e3f3eb76907eaf9398ba9f9fb42ead3c966 META.yml
+SHA1 99e8c93bf5fe0f72f8f1e3dc97e43ec719ecff80 README
+SHA1 e7f2cf54f060bc19602fb76f4fb4b00141d03b14 inc/MyBuild.pm
+SHA1 d38b26bef9ad8d75a4007e9ba7819bc024abd6f0 lib/Test/Sims.pm
+SHA1 d0c2da3fcff3aa32464295b56fe34eac1162df4b t/00compile.t
+SHA1 8c1c1e43594b983b2664326f6856803d46d3d993 t/control_rand.t
+SHA1 a516cb837168bd68c5dff46ea49678555ec24994 t/diag_seed_on_fail.t
+SHA1 b9b3c78da5ddab8f3a1b05d6003effdcd12fcd40 t/diag_seed_on_plan_but_no_tests.t
+SHA1 eaa9016dfede3f02c1f3fd787d78515045a34b34 t/examples/datetime.t
+SHA1 48bfd9eaede501e474f9ec67818e2d8d82828ee1 t/export_sims.t
+SHA1 7b96feb45c48861f38556c36eac8720237ef6f3f t/exports.t
+SHA1 453cb05fbcbd465f289701c2982a09b139e16f41 t/lib/MyTest.pm
+SHA1 091302c0107ddb096766de2b071701e6d8effc81 t/make_rand_code.t
+SHA1 14896a2a11635537e04d06208e9a9845a81a8787 t/no_tests_no_seed.t
+SHA1 bd5441a103bf07f38afc5be7eaf36a9b0fcf33e9 t/note_seed_on_pass.t
+SHA1 382dc25ac7661dacaa530ec8707a4a2dbf22f22b t/rand.t
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG/MacGPG2 v2.0.11 (Darwin)
+
+iEYEARECAAYFAkpJhRYACgkQWMohlhD1QydjxQCfcIRkekymvT0dyj5QCBJxxjf8
+4BQAniW7Z9x5QbIVdliog94LqNC2dmc0
+=bIHZ
+-----END PGP SIGNATURE-----
