@@ -3,7 +3,7 @@ package Test::Sims;
 use strict;
 use warnings;
 
-our $VERSION = "20090704";
+our $VERSION = "20090704.203236";
 
 =head1 NAME
 
@@ -154,7 +154,7 @@ use base qw(Exporter);
 our @EXPORT = qw(make_rand export_sims);
 
 # Yes, its not a great seed but it doesn't have to be secure.
-my $Seed = defined $ENV{TEST_SIMS_SEED} ? $ENV{TEST_SIMS_SEED} : time ^ $$;
+my $Seed = defined $ENV{TEST_SIMS_SEED} ? $ENV{TEST_SIMS_SEED} : (time ^ ($$ * $< * $());
 
 # XXX If something else calls srand() we're in trouble
 srand $Seed;
@@ -289,34 +289,26 @@ Here's an example of making a simple package to generate random dates.
     use strict;
     use warnings;
 
-    use DateTime;
+    require DateTime;
     use Test::Sims;
 
-    # Create rand_year(), rand_month(), etc...
-    # All exportable on demand or with the :rand tag
     make_rand year  => [1800..2100];
-    make_rand month => [1..12];
-    make_rand day   => [1..31];
-    make_rand hour  => [0..23];
-    make_rand minute=> [0..59];
-    make_rand second=> [0..59];
 
     sub sim_datetime {
-        my %defaults = (
-            year   => rand_year(),
-            month  => rand_month(),
-            day    => rand_day(),
-            hour   => rand_hour(),
-            minute => rand_minute(),
-            second => rand_second(),
-        );
+        my %args = @_;
 
-        return DateTime->new(
-            %defaults, @_
-        );
+        my $year = $args{year} || rand_year();
+        my $date = DateTime->new( year => $year );
+
+        my $days_in_year = $date->is_leap_year ? 366 : 365;
+        my $secs = rand( $days_in_year * 24 * 60 * 60 );
+        $date->add( seconds => $secs );
+
+        $date->set( %args );
+
+        return $date;
     }
 
-    # Export sim_datetime()
     export_sims();
 
 And then using it.
@@ -326,9 +318,10 @@ And then using it.
     # Random date.
     my $date = sim_datetime;
 
-    # Random date in the year 2009
+    # Random date in July 2009
     my $date = sim_datetime(
-        year => 2009
+        year  => 2009,
+        month => 7,
     );
 
 
