@@ -3,7 +3,7 @@ package Test::Sims;
 use strict;
 use warnings;
 
-our $VERSION = "20090704.203236";
+our $VERSION = "20130412";
 
 =head1 NAME
 
@@ -258,10 +258,22 @@ sub _alias {
     return;
 }
 
+
+sub _test_was_successful {
+    my $tb = shift;
+
+    if( $tb->can("history") ) {
+        return $tb->history->test_was_successful;
+    }
+    else {
+        return $tb->summary && !( grep !$_, $tb->summary );
+    }
+}
+
 sub _display_seed {
     my $tb = shift;
 
-    my $ok = $tb->summary && !( grep !$_, $tb->summary );
+    my $ok = _test_was_successful($tb);
     my $msg = "TEST_SIMS_SEED=$Seed";
     $ok ? $tb->note($msg) : $tb->diag($msg);
 
